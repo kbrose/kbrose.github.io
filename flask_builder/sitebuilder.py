@@ -7,6 +7,8 @@ from flask_frozen import Freezer
 DEBUG = True
 FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
+FREEZER_DESTINATION = '..\\'
+FREEZER_REMOVE_EXTRA_FILES = False
 
 app = Flask(__name__)
 app.config.from_object(__name__)
