@@ -48,11 +48,11 @@ a:link {
 a:visited { 
     font-weight: bold; 
     text-decoration: none; 
-    color: #2080c0;
+    color: #654C94;
 }
 a:hover, a:focus, a:active { 
     text-decoration: underline; 
-    color: #407060;
+    color: #e09880;
 }
 
 
