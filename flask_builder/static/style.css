@@ -1,0 +1,79 @@
+/* css Zen Garden default style v1.02 */
+/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/  */
+
+/* This file based on 'Tranquille' by Dave Shea */
+/* You may use this file as a foundation for any new work, but you may find it easier to start from scratch. */
+/* Not all elements are defined in this file, so you'll most likely want to refer to the xhtml as well. */
+
+/* Your images should be linked as if the CSS file sits in the same folder as the images. ie. no paths. */
+
+/* 66C2A5, FC8D62, 8DA0CB, E78AC3, A6D854, FFD92F, A07364, 654C94, B54F67 */
+/* basic elements */
+html {
+    margin: 0;
+    padding: 0;
+}
+body { 
+    font-family: Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    color: #333; 
+    background: #eeeeee no-repeat bottom right; 
+    margin: 0; 
+    padding: 0;
+}
+p { 
+    margin-top: 0; 
+    margin-left: 100px;
+    margin-right: 100px;
+    text-align: justify;
+}
+h1,h2,h3,h4,h5,h6 { 
+    font-weight: bold;
+    letter-spacing: 1px; 
+    margin-bottom: 0; 
+    margin-left: 100px;
+    margin-right: 100px;
+    color: #000000;
+}
+
+div {
+    display: inline-block;
+}
+
+a:link { 
+    font-weight: bold; 
+    text-decoration: none; 
+    color: #009999;
+}
+a:visited { 
+    font-weight: bold; 
+    text-decoration: none; 
+    color: #2080c0;
+}
+a:hover, a:focus, a:active { 
+    text-decoration: underline; 
+    color: #407060;
+}
+
+
+/* my classes */
+.figwrap {
+    background: #131313 no-repeat fixed center;
+    width: 100%;
+}
+.figwrap p {
+    color: #ddd;
+}
+.figwrap h1,.figwrap h2,.figwrap h3,.figwrap h4,.figwrap h5,.figwrap h6{
+    color: #fff;
+}
+
+.figimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fig {
+    margin: 100px 0;
+}

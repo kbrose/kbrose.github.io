@@ -6,6 +6,7 @@
         | Tagged:
         {% for page_tag in page.meta.tags %}
             <a href="{{ url_for("tag", tag=page_tag) }}">{{ page_tag }}</a>
+            {% if not loop.last -%}, {% endif %}
         {% endfor %}
     {% endif %}
     </li>
