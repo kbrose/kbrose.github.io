@@ -10,15 +10,15 @@
 /* 66C2A5, FC8D62, 8DA0CB, E78AC3, A6D854, FFD92F, A07364, 654C94, B54F67 */
 /* basic elements */
 html {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 body { 
     font-family: Helvetica, Arial, sans-serif;
     line-height: 1.5;
     color: #333; 
-    background: #f0f0f0 no-repeat bottom right; 
-    margin: 0; 
+    background: #fcfcf9 no-repeat bottom right; 
+    margin: 0px; 
     padding: 0;
 }
 p { 
@@ -33,7 +33,7 @@ h1,h2,h3,h4,h5,h6 {
     margin-bottom: 0; 
     margin-left: 100px;
     margin-right: 100px;
-    color: #000000;
+    color: #000;
 }
 p+p {
     margin-top: 20px;
@@ -60,7 +60,7 @@ a:hover, a:focus, a:active {
 
 /* my classes */
 .figwrap {
-    background: #131313 no-repeat fixed center;
+    background: #0f0f0d no-repeat fixed center;
     width: 100%;
 }
 .figwrap p {
@@ -78,4 +78,36 @@ a:hover, a:focus, a:active {
 
 .fig {
     margin: 100px 0;
+}
+
+.top-nav-bar {
+    /*position: fixed;*/
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 200px;
+    background-color: #0f0f0d;
+    border-bottom: 0px solid #888;
+}
+
+.top-nav-bar h1{
+  font-size: 48px;
+  position: relative;
+  top: 80px;
+  margin-top: 0;
+}
+.top-nav-bar h1 a:link { 
+    font-weight: bold; 
+    text-decoration: none; 
+    color: #fff;
+}
+.top-nav-bar h1 a:visited { 
+    font-weight: bold; 
+    text-decoration: none; 
+    color: #fff;
+}
+.top-nav-bar h1 a:hover, .top-nav-bar h1 a:focus, .top-nav-bar h1 a:active { 
+    text-decoration: underline; 
+    color: #e0e0ff;
 }

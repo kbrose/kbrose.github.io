@@ -10,9 +10,12 @@
     <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1><a = href="{{ url_for("index") }}">Home</a></h1>
-{% block content %}
-    <p>Default content to be displayed</p>
-{% endblock content %}
+    <nav class="top-nav-bar">
+    <h1><a = href="{{ url_for("index") }}">factors</a></h1>
+    </nav>
+    <div>
+    {% block content %}
+    {% endblock content %}
+    </div>
 </body>
 </html>
