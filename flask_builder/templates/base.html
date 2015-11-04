@@ -2,20 +2,22 @@
 <html>
 <head>
     <meta charset="utf-8">
+    {% if page is defined %}
     {% if page.title %}
     <title>{{ page.title }} - factors</title>
     {% else %}
     <title>factors</title>
     {% endif %}
-    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    {% else %}
+    <title>factors</title>
+    {% endif %}
+    <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <nav class="top-nav-bar">
     <h1><a = href="{{ url_for("index") }}">factors</a></h1>
     </nav>
-    <div>
     {% block content %}
     {% endblock content %}
-    </div>
 </body>
 </html>
