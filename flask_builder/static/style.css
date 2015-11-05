@@ -57,13 +57,6 @@ a:hover, a:focus, a:active {
     color: #e09880;
 }
 
-#map {
-    height: 180px;
-    width: 600px;
-    margin-left: 100px;
-}
-
-
 /* my classes */
 .figwrap {
     background: #0f0f0d no-repeat fixed center;
@@ -117,6 +110,18 @@ a:hover, a:focus, a:active {
     text-decoration: underline; 
     color: #e0e0ff;
 }
+
+
+/* maps */
+
+
+#map {
+    height: 800px;
+    width: 1000px;
+    margin-left: 100px;
+}
+
+
 
 /* Leaflet style sheet */
 
