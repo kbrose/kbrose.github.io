@@ -22,14 +22,14 @@ FREEZER_REMOVE_EXTRA_FILES = False
 
 def jinja_prerender(text):
     prerendered_body = render_template_string(text)
-    print text
+    print(text)
     return pygmented_markdown(prerendered_body)
 
 # Set up
 
 app = Flask(__name__)
 app.config.from_object(__name__)
-# app.config['FLATPAGES_HTML_RENDERER'] = jinja_prerender
+app.config['FLATPAGES_HTML_RENDERER'] = jinja_prerender
 pages = FlatPages(app)
 freezer = Freezer(app)
 
@@ -79,8 +79,8 @@ def product_url_generator():
     path_to_img = os.path.join(os.path.dirname(__file__),
                               './img')
 
-    js_urls  = map(lambda x: '/js/' + x , os.listdir(path_to_js))
-    img_urls = map(lambda x: '/img/' + x, os.listdir(path_to_img))
+    js_urls  = ['/js/' + x for x in os.listdir(path_to_js)]
+    img_urls = ['/img/' + x for x in os.listdir(path_to_img)]
 
     return js_urls + img_urls
 

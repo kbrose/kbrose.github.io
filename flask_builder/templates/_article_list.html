@@ -1,0 +1,19 @@
+<ul>
+{% for page in pages|sort(attribute='meta.date', reverse=True) %}
+    <li>
+        <a href="{{ url_for("page", path=page.path) }}">{{page.meta.date}} {{ page.title }}</a>
+    {% if page.meta.tags|length %}
+        <ul>
+        <li> [
+        {% for page_tag in page.meta.tags %}
+            <a href="{{ url_for("tag", tag=page_tag) }}">{{ page_tag }}</a>{% if not loop.last -%}, {% endif %}
+        {% endfor %}
+        ]
+        </li>
+        </ul>
+    {% endif %}
+    </li>
+{% else %}
+    <li>No pages found.</li>
+{% endfor %}
+</ul>

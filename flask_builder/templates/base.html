@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     {% if page is defined %}
-    {% if page.title %}
-    <title>{{ page.title }} - factors</title>
+        {% if page.title %}
+        <title>{{ page.title }} - factors</title>
+        {% else %}
+        <title>factors</title>
+        {% endif %}
     {% else %}
-    <title>factors</title>
-    {% endif %}
-    {% else %}
-    <title>factors</title>
+        <title>factors</title>
     {% endif %}
     <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css') }}">
 </head>
