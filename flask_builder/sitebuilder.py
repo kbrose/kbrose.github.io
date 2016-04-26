@@ -1,4 +1,3 @@
-import sys
 import os
 import argparse
 
@@ -100,12 +99,16 @@ if __name__ == '__main__':
     subparsers = parser.add_subparsers()
 
     build_parser = subparsers.add_parser('build')
+    build_parser.set_defaults(func=build)
 
     run_parser = subparsers.add_parser('run')
-    run_parser.add_argumnent('-p', '--port',
-                             help='Specify port',
-                             nargs=1,
-                             type=int,
-                             default=8000)
+    run_parser.add_argument('-p', '--port',
+                            help='Specify port',
+                            nargs=1,
+                            type=int,
+                            default=8000)
+    run_parser.set_defaults(func=run)
 
     args = parser.parse_args()
+
+    args.func(args)
