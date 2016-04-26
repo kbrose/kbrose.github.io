@@ -22,3 +22,6 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+
+# Code to generate the site
+flask_builder/*
