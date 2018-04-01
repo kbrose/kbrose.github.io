@@ -10,13 +10,13 @@
 </head>
 <body>
 	{% include header.html %}
-	<div class="container">
+	<section class="main-content">
 		<article>
 			<h1><a href="{{ site.base_url }}{{ page.url }}">{{ page.title }}</a></h1>
 			<p>{{ page.date | date_to_string }}</p>
 			<p>{{ content }}</p>
 		</article>
-	</div>
-	{% include footer.html %}
+		{% include footer.html %}
+	</section>
 </body>
 </html>
