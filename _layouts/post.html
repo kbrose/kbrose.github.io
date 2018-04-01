@@ -9,9 +9,7 @@
 	<title>factors</title>
 </head>
 <body>
-	<header>
-		{% include header.html %}
-	</header>
+	{% include header.html %}
 	<div class="container">
 		<article>
 			<h1><a href="{{ site.base_url }}{{ page.url }}">{{ page.title }}</a></h1>
@@ -19,8 +17,6 @@
 			<p>{{ content }}</p>
 		</article>
 	</div>
-	<footer>
-		{% include footer.html %}
-	</footer>
+	{% include footer.html %}
 </body>
 </html>
