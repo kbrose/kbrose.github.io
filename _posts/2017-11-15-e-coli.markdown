@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Predicting Chicago's Beach Water Quality"
-img: /assets/imgs/e-coli/roc.png
+img: /assets/imgs/e-coli/corr.png
 ---
 
 # The Context
@@ -19,6 +19,10 @@ I worked along with several other volunteers at ChiHackNight trying to improve t
 However, two important facts did surface as part of this work. First, during initial data exploration and visualizations, it became quite clear that while there was very little correlation between _E. coli_ samples at a beach from one day to the next, there was substantial correlation between the _E. coli_ readings of beaches taken on the same day. Second, we discovered that there was a new method of measuring _E. coli_ levels that had a much quicker turn around (1 hour instead of 1 day), albeit at a higher cost.
 
 If the Chicago Parks District had the budget for it, they could simply have used the new sampling method to get perfect readings. Unfortunately this was not in the budget. As a solution, we had the idea to build a model that would take measurements a _subset_ of the beaches and use those results to predict _E. coli_ at the remaining beaches that were not measured. Instead of using the complete but out-of-date information about yesterday's readings, we could use incomplete but timely information.
+
+![](/assets/imgs/e-coli/corr.png)
+
+_Correlation matrix demonstrating the abundance of correlations between beach's E. coli levels taken on the same day (left matrix), and the lack of correlation between samples from the same beach taken one day apart (right). Brighter colors indicate higher correlation values._
 
 In addition to having more all-around accuracy, this method has another nice side effect. While exploring the data we found that 5 beaches out of the ~20 or so were responsible for about 56% of the _E. coli_ exceedances. By sampling these beaches directly with the newer, faster method we no longer need to try and _predict_ them. This means even if the predictive model did not change, we would still increase our sensitivity by an order of magnitude. Clearly this was the path forward.
 
