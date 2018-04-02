@@ -1,0 +1,47 @@
+---
+layout: post
+title: "Predicting Chicago's Beach Water Quality"
+img: /assets/imgs/e-coli/roc.png
+---
+
+# The Context
+
+In the 1909 Plan of Chicago, architect Daniel Burnham wrote "The Lakefront by right belongs to the people, not a foot of its shores should be appropriated to the exclusion of the people." <!-- Excluding a few private harbors and one airport that has since been reclaimed for the people during a midnight (de-)construction project, this vision remains remarkably accurate. -->  What Burnham did _not_ write about is the host of dangerous microorganisms that (by right) belong to the Lakefront. Protecting its beachgoers from illness caused by low water quality is an ongoing project for the City of Chicago.
+
+It seems like something that should be straight forward, and in some ways it is. The state of the art testing for a long time was to just throw some of your water in a petri dish and check back 24 hours later to see what grew. The problem is that the _E. coli_ levels change drastically day-to-day. If you're an employee of Chicago's Parks District trying to decide if you're going to issue a swim advisory _today_ and all that is available is _yesterday's_ results, you may as well flip a coin.
+
+Trying to improve the situation, the City of Chicago partnered with the USGS to develop a _predictive_ model. This model would take in yesterday's _E. coli_ reading along with some other information (water temperature, choppiness, etc.) and would try to predict what today's _E. coli_ is. While better than nothing, this predictive model correctly issued swim advisories **4%** of the time. Knowing we could do better, the Chief Data Officer for the City of Chicago brought a project to ChiHackNight looking to improve the predictive model.
+
+# The Work
+
+I worked along with several other volunteers at ChiHackNight trying to improve the predictive model. We tried including new data like weather, day-of-the-week, was there a holiday recently, including more historical values on top of just yesterday's _E. coli_ reading. We tried many different regression models. Comparing performance on a held-out test set of 2015, we found that none of the new data or new regression methods really changed performance significantly. There was just too much unexplained variance. It's possible if we had a better idea of animal behavior or water currents we could have done better, but the data was simply not available. Ultimately, none of these attempts turned out to be useful.
+
+However, two important facts did surface as part of this work. First, during initial data exploration and visualizations, it became quite clear that while there was very little correlation between _E. coli_ samples at a beach from one day to the next, there was substantial correlation between the _E. coli_ readings of beaches taken on the same day. Second, we discovered that there was a new method of measuring _E. coli_ levels that had a much quicker turn around (1 hour instead of 1 day), albeit at a higher cost.
+
+If the Chicago Parks District had the budget for it, they could simply have used the new sampling method to get perfect readings. Unfortunately this was not in the budget. As a solution, we had the idea to build a model that would take measurements a _subset_ of the beaches and use those results to predict _E. coli_ at the remaining beaches that were not measured. Instead of using the complete but out-of-date information about yesterday's readings, we could use incomplete but timely information.
+
+In addition to having more all-around accuracy, this method has another nice side effect. While exploring the data we found that 5 beaches out of the ~20 or so were responsible for about 56% of the _E. coli_ exceedances. By sampling these beaches directly with the newer, faster method we no longer need to try and _predict_ them. This means even if the predictive model did not change, we would still increase our sensitivity by an order of magnitude. Clearly this was the path forward.
+
+This model was developed prior to Summer 2017, and was run as a pilot program while the beaches were open. **The new proposed model would have issued 90 correct swim advisories and 71 incorrect swim advisories. In 2016, the old model issued 12 correct and 184 incorrect swim advisories and in 2015 it issued 14 correct and 184 incorrect swim advisories.** In other words, the new model issues 6 times more correct advisories while decreasing the number of incorrect advisories by more than half. These results are including the beaches that were sampled in the same day and describe the actual impact on beach-goers. Removing these beaches and only looking at those which were _precicted_, the sensitivity still increases threefold from 4% to 12% with no significant change in specificity.
+
+![roc curve](/assets/imgs/e-coli/roc.png)
+
+_ROC curve comparing performances. Prior-day Model is the older model developed by USGS, Hybrid Model is the new model described here but **only** on those beaches that were predicted, not measured directly. From the pre-print publication._
+
+In summary, the new method hugely increases the sensitivity while simultaneously decreasing the number of false positives, all the while not increasing the operating cost for the Chicago Parks District.
+
+# The Lessons
+
+This was my first time working on a project that required communicating performance measures to non-technical people. I struggled to communicate the idea that we could trade off some more False Positives in exchange for more True Positives. The main communication barrier here was that we were building models that directly predicted _E. coli_ levels as returned by the measurement (in units "colony-forming units", or cfu), and the EPA had guidelines on what _E. coli_ levels required a swim advisory. To them, if the model predicted 234 cfu and the EPA guidelines said the cutoff was 235 cfu and above, then there's no need to issue a swim advisory. Outputting the same values as returned by the direct measurement may have implied more precision than there was in reality. Whatever the cause, changing the output of the model to the "probability that the _E. coli_ levels were above the cutoff" was in some ways easier, even though we got there by replacing just dividing the output of the model by 2500 (the maximum number that could be returned by the measuring process).  
+
+A retrospective on what the project was actually trying to accomplish in addition to a review of available measurement methods were also necessary to actually achieve impact. To a certain extent, we had become too focused on improving the model using yesterday's measurements and were continually being frustrated by the inability to move the needle. By stepping back and actually listening to what the data was telling us, we realized that using same-day readings were a much more effective use of time, effort, and money.
+
+# See Also
+
+[Code and data on GitHub](https://github.com/Chicago/clear-water)
+
+[Pre-print published on BioRXiv](https://www.biorxiv.org/content/early/2018/01/29/250480)
+
+[Official project description from the City of Chicago](http://chicago.github.io/clear-water/)
+
+[[Video] Presentation at ChiHackNight](https://youtu.be/svMEO9wrud4?t=10m2s)
