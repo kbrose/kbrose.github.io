@@ -1,2 +1,7 @@
 port:  5000
 encoding: utf-8
+
+collections:
+  projects:
+    output: true
+    permalink: /:collection/:path
