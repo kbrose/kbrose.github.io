@@ -1,6 +1,13 @@
 port:  5000
 encoding: utf-8
 
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
+
 collections:
   projects:
     output: true
