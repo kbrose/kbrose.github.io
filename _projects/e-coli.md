@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Predicting Chicago's Beach Water Quality"
 img: "/assets/imgs/e-coli/do-not-feed-the-birds.JPG"
 ---
