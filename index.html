@@ -12,11 +12,11 @@
 		</section>
 	</header>
 	<section class="main-content">
-		{% for post in site.posts %}
+		{% for project in site.projects %}
 			<article>
-				<a href="{{ site.base_url }}{{ post.url }}">
-					<h2>{{ post.title }}</h2>
-					<img src="{{ post.img }}">
+				<a href="{{ site.base_url }}{{ project.url }}">
+					<h2>{{ project.title }}</h2>
+					<img src="{{ project.img }}">
 				</a>
 			</article>
 		{% endfor %}
