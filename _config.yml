@@ -4,7 +4,7 @@ encoding: utf-8
 collections:
   projects:
     output: true
-    permalink: /:collection/:path
+    permalink: /:collection/:path/
 
 defaults:
   -
